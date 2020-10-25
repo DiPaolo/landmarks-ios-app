@@ -15,10 +15,9 @@ struct LandmarkRow: View {
             Text(landmark.name)
             Spacer()
             
-            if landmark.isFavorite {
-                Image(systemName: "star.fill")
-                    .imageScale(/*@START_MENU_TOKEN@*/.medium/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.yellow)
+            if landmark.rating != nil {
+                Rating(mark: landmark.rating!)
+//                Text("\(landmark.rating!.rawValue)")
             }
         }
     }
