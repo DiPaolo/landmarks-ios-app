@@ -9,8 +9,9 @@ import SwiftUI
 import Combine
 
 final class UserData: ObservableObject {
-    @Published var showRatedOnly = false
     @Published var landmarks = landmarkData
+    @Published var showRated = true
+    @Published var showUnrated = true
 }
 
 struct UserData_Previews: PreviewProvider {

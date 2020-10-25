@@ -13,12 +13,17 @@ struct LandmarkList: View {
     var body: some View {
         NavigationView {
             List {
-                Toggle(isOn: $userData.showRatedOnly) {
-                    Text("Rated only")
+                Toggle(isOn: $userData.showRated) {
+                    Text("Show Rated Only")
+                }
+
+                Toggle(isOn: $userData.showUnrated) {
+                    Text("Show Unrated Only")
                 }
                 
                 ForEach(userData.landmarks) { landmark in
-                    if !self.userData.showRatedOnly || landmark.rating != nil {
+                    if (self.userData.showRated && landmark.rating != nil) ||
+                       (self.userData.showUnrated && landmark.rating == nil) {
                         NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
                             LandmarkRow(landmark: landmark)
                         }

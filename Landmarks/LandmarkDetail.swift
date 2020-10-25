@@ -17,13 +17,19 @@ struct LandmarkDetail: View {
     
     var body: some View {
         VStack {
-            MapView(coordinate: landmark.locationCoordinate)
-                .edgesIgnoringSafeArea(.top)
-                .frame(height: 300)
+            NavigationLink(destination: MapView(coordinate: landmark.locationCoordinate).edgesIgnoringSafeArea(.top)) {
+                MapView(coordinate: landmark.locationCoordinate)
+                    .edgesIgnoringSafeArea(.top)
+                    .frame(height: 150)
+            }
 
-            CircleImage(image: landmark.image)
-                .offset(x: 0, y: -130)
-                .padding(.bottom, -130)
+            NavigationLink(destination: landmark.image) {
+                CircleImage(image: landmark.image)
+                    .offset(x: 0, y: -100)
+                    .padding(.bottom, -100)
+            }
+
+            Rating()
 
             VStack(alignment: .leading) {
                 Text(landmark.name)
